@@ -5,17 +5,13 @@ function computerPlay () {
 }
 
 function playRound (playerSelection, computerSelection) {
-    // playerSelection = playerSelection.toLowerCase();
-    // computerSelection = computerSelection.toLowerCase();
-    if (playerSelection == "rock" && computerSelection == "paper") {
+    if ((playerSelection == "rock" && computerSelection == "paper") || 
+    (playerSelection == "scissors" && computerSelection == "rock") ||
+    (playerSelection == "paper" && computerSelection == "scissors")) {
         return("You Lose! " + computerSelection + " beat " + playerSelection);
-    } else if (playerSelection == "scissors" && computerSelection == "rock") {
-        return("You Lose! " + computerSelection + " beat " + playerSelection);
-    } else if (playerSelection == "paper" && computerSelection == "scissors") {
-        return("You Lose! " + computerSelection + " beat " + playerSelection);
-    } else if (playerSelection == "paper" && computerSelection == "rock") {
-        return("You WIN!");
-    } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    } else if ((playerSelection == "paper" && computerSelection == "rock") || 
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "scissors" && computerSelection == "paper")){
         return("You WIN!");
     } else if (playerSelection == computerSelection) {
         return("Tie Game!");
@@ -26,6 +22,6 @@ function playRound (playerSelection, computerSelection) {
 
 let user = window.prompt ("Enter your RPS: ");
 let userInput = user.toLowerCase();
-// let computerInput = computerPlay().toLowerCase();
-let output = playRound(userInput, computerPlay().toLowerCase());
+let computerInput = computerPlay().toLowerCase();
+let output = playRound(userInput, computerInput);
 alert(output + " You put: " + userInput + " Comp put: " + computerInput);
